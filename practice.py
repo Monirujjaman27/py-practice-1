@@ -1,11 +1,13 @@
 from cProfile import label
+from cgitb import text
 from curses import window
 from tkinter import *
+from turtle import left
 
 from click import confirm
 window =  Tk()
 # app size
-window.geometry('500x500')
+window.geometry('1000x700')
 # app title 
 window.title('Practice Title')
 # app image 
@@ -13,42 +15,22 @@ icone = PhotoImage(file="edu.png")
 window.iconphoto(True, icone)
 # app background 
 window.config(background="#e7e7e7")
-# label
-label =Label(window,
-            text="Welome",
-            font=("Arial",40,'bold'),
-            fg="red",
-            bg="green",
-            relief=RIDGE, #RIDGE, RAISED
-            bd=20,
-            padx=10,
-            pady=10,
-            )
-label.pack() 
-# label.place(x = 0, y=0) 
+# entry
+entry = Entry(window,show="*")
+entry.place(x=0, y=0)
 
+def submit():
+    print('submit')
 
-# button 
-clicktime = 0
-def btnClick():
-    global clicktime
-    clicktime+=1
-    print(clicktime)
+def delete():
+    print('delete')
 
-btn = Button(window,
-            text="Click",
-            command=btnClick,
-            font=("Comic Sanse", 30),
-            bg="white",
-            fg="black",
-            activebackground="yellow",
-            activeforeground='green',
-            # state=DISABLED
-            image=icone,
-            compound='top',
-            # width=50
-            )                
-btn.pack()
+submit_btn = Button(window, text="SUbmit", command=submit) 
+submit_btn.place(x=0, y=20)
+
+del_btn = Button(window, text="DELETE", command=delete) 
+del_btn.place(x=70, y=20)
+
 
 
 window.mainloop()
